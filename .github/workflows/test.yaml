@@ -14,11 +14,16 @@ jobs:
     - name: Print echo
       run: |
         echo Hello
-        sleep 100
+
+    - name: Print env
+      run: |
+        env
+        
   
   build2:
     name: Build2 Docker
     runs-on: my-custom-runner
+    needs: [install]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -26,4 +31,4 @@ jobs:
     - name: Print echo2
       run: |
         echo Hello
-        sleep 100
+        
