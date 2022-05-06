@@ -28,7 +28,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Print echo2
+    - name: Print ansible
       run: |
-        echo Hello
+        ansible --version
         
