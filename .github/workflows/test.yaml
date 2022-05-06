@@ -23,7 +23,7 @@ jobs:
   build2:
     name: Build2 Docker
     runs-on: my-custom-runner
-    needs: [install]
+    needs: [build]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
