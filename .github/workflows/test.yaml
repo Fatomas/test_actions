@@ -1,5 +1,5 @@
 ---
-name: Example 2
+name: Test
 on:
   push:
     branches: [ master ]
@@ -11,7 +11,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-     - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/yarn
+    - name: Install dependencies
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      uses: ./.github/actions/yarn
         
