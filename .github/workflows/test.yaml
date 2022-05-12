@@ -11,6 +11,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: setup node ${{matrix.node-version}}
+      uses: actions/setup-node@v1.4.1
+      with:
+        node-version: 16
+
+    - name: Install Yarn
+      run: npm install -g yarn
+
     - name: Install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       uses: ./.github/actions/yarn
