@@ -15,8 +15,8 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         
-       - name: Save DigitalOcean kubeconfig
-      run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
 
       - uses: actions-hub/kubectl@master
         with:
