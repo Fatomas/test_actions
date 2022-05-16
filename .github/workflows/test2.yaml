@@ -1,34 +1,24 @@
 ---
-name: Example 2
-on:
-  push:
-    branches: [ master ]
+name: Get pods
+on: [push]
+
 jobs:
-  build:
-    name: Build Docker
-    runs-on: my-custom-runner
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
-    - name: Print echo
-      run: |
-        echo Hello
-
-    - name: Print env
-      run: |
-        env
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         
-  
-  build2:
-    name: Build2 Docker
-    runs-on: my-custom-runner
-    needs: [build]
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+       - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
 
-    - name: Print ansible
-      run: |
-        ansible --version
+      - uses: actions-hub/kubectl@master
+        with:
+          args: get node
         

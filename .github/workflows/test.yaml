@@ -1,25 +1,25 @@
----
-name: Test
-on:
-  push:
-    branches: [ master ]
-jobs:
-  build:
-    name: Build Docker
-    runs-on: my-custom-runner
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+# ---
+# name: Test
+# on:
+#   push:
+#     branches: [ master ]
+# jobs:
+#   build:
+#     name: Build Docker
+#     runs-on: my-custom-runner
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: setup node 
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
+#     - name: setup node 
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: 16
 
-    - name: Install Yarn
-      run: npm install -g yarn
+#     - name: Install Yarn
+#       run: npm install -g yarn
 
-    - name: Install dependencies
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      uses: ./.github/actions/yarn
+#     - name: Install dependencies
+#       if: steps.cache-node-modules.outputs.cache-hit != 'true'
+#       uses: ./.github/actions/yarn
         
