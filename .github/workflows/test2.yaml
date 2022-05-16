@@ -19,6 +19,8 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
 
       - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
           args: get node
         
