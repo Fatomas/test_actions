@@ -1,31 +1,31 @@
----
-name: Get pods
-on: [push]
+# ---
+# name: Get pods
+# on: [push]
 
-jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     name: Deploy
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v1
+#     steps:
+#       - uses: actions/checkout@v1
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#       - name: Install doctl
+#         uses: digitalocean/action-doctl@v2
+#         with:
+#           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         
-      - name: Save DigitalOcean kubeconfig
-        run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
+#       - name: Save DigitalOcean kubeconfig
+#         run: doctl kubernetes cluster kubeconfig save 31a830c3-0b13-4b92-a966-fa4b04a36f27
 
-      - name: Install Kubect
-        run: |
-          sudo apt-get update && sudo apt-get install -y apt-transport-https
-          curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-          echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-          sudo apt-get update
-          sudo apt-get install -y kubectl
+#       - name: Install Kubect
+#         run: |
+#           sudo apt-get update && sudo apt-get install -y apt-transport-https
+#           curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+#           echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+#           sudo apt-get update
+#           sudo apt-get install -y kubectl
 
-      - name: Get Node
-        run: kubectl get node
+#       - name: Get Node
+#         run: kubectl get node
         
