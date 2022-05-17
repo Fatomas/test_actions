@@ -1,7 +1,7 @@
-name: yarn
-description: install dependencies
+name: install ansible
+description: install ansible
 runs:
   using: "composite"
   steps:
-    - run: yarn install
+    - run: sudo apt update && sudo apt install ansible -y
       shell: bash
